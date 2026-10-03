@@ -1,39 +1,20 @@
-const data = await (await fetch('./data/edition-001.json')).json();
-const sourceList = document.querySelector('#sourceList'),
-  claimList = document.querySelector('#claimList'),
-  claimSummary = document.querySelector('#claimSummary');
-
-const claimSamples = [
-  {id:'C04',status:'VERIFIED_FACT',text:'The ECI’s 26 September press note describes procedural measures for affected voters, including house visits and help desks/camps.',materiality:'HIGH',sources:'S2'},
-  {id:'C08',status:'VERIFIED_FACT',text:'Approximately 13 crore entries were reported as absent from draft rolls; that draft-roll measure does not establish wrongful deletion.',materiality:'CRITICAL',sources:'S10'},
-  {id:'C11',status:'ATTRIBUTED_CLAIM',text:'Indian Express and NDTV reported an ECI communication dated 29 September calling for special drives in completed-SIR jurisdictions.',materiality:'CRITICAL',sources:'S10, S11'},
-  {id:'C20',status:'VERIFIED_FACT',text:'The Supreme Court judgment of 27 May 2026 addressed Bihar’s SIR, its legal framework and citizenship-related inquiry.',materiality:'CRITICAL',sources:'S1'},
-  {id:'C30',status:'VERIFIED_FACT',text:'Goa’s CEO office said 88 of 97 left-out voters had submitted Form 6 and been accepted.',materiality:'HIGH',sources:'S12'},
-  {id:'C44',status:'VERIFIED_FACT',text:'The ECI said ECINET uses role-based access and would be reviewed by an expert committee for compliance with applicable Acts and Rules.',materiality:'HIGH',sources:'S2'}
-];
-
-const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-
-for (const s of data.sources) {
-  const item = document.createElement('article');
-  item.className = 'source-item';
-  item.innerHTML = `<div class="source-id">${esc(s.id)}</div><div class="source-tier">${esc(s.tier)}</div><div><div class="source-title">${esc(s.title)}</div><span class="source-meta">${esc(s.date)} · ${esc(s.access)}</span>${s.url ? `<a href="${esc(s.url)}" target="_blank" rel="noreferrer">${esc(s.url)}</a>` : '<span class="source-meta">No URL — intentionally removed during QA.</span>'}</div>`;
-  sourceList.appendChild(item);
-}
-
-function renderClaims(filter = 'ALL') {
-  const counts = data.lead.claim_status_counts;
-  claimSummary.innerHTML = Object.entries(counts).map(([k, v]) => `<div class="claim-stat"><b>${v}</b><small>${k.replaceAll('_', ' ')}</small></div>`).join('');
-  claimList.innerHTML = claimSamples.filter(x => filter === 'ALL' || x.status === filter).map(c => `<div class="claim-item"><div class="claim-top"><span class="claim-id">${esc(c.id)}</span><span class="status-label ${c.status === 'VERIFIED_FACT' ? 'verified' : c.status === 'ATTRIBUTED_CLAIM' ? 'attributed' : 'unknown'}">${esc(c.status.replaceAll('_', ' '))}</span></div><div class="claim-text">${esc(c.text)}</div><div class="claim-meta">Materiality: ${esc(c.materiality)} · Sources: ${esc(c.sources)}</div></div>`).join('');
-}
+const data=await (await fetch('./data/edition-001.json')).then(r=>r.json());
+const deepEdition=await (await fetch('./data/global-edition-001.json')).then(r=>r.json());
+const sourceList=document.querySelector('#sourceList'),claimList=document.querySelector('#claimList'),claimSummary=document.querySelector('#claimSummary'),deepPages=document.querySelector('#deepPages');
+const claimSamples=[
+{id:'C04',status:'VERIFIED_FACT',text:'The ECI’s 26 September press note describes procedural measures for affected voters, including house visits and help desks/camps.',materiality:'HIGH',sources:'S2'},
+{id:'C08',status:'VERIFIED_FACT',text:'Approximately 13 crore entries were reported as absent from draft rolls; that draft-roll measure does not establish wrongful deletion.',materiality:'CRITICAL',sources:'S10'},
+{id:'C11',status:'ATTRIBUTED_CLAIM',text:'Indian Express and NDTV reported an ECI communication dated 29 September calling for special drives in completed-SIR jurisdictions.',materiality:'CRITICAL',sources:'S10, S11'},
+{id:'C20',status:'VERIFIED_FACT',text:'The Supreme Court judgment of 27 May 2026 addressed Bihar’s SIR, its legal framework and citizenship-related inquiry.',materiality:'CRITICAL',sources:'S1'},
+{id:'C30',status:'VERIFIED_FACT',text:'Goa’s CEO office said 88 of 97 left-out voters had submitted Form 6 and been accepted.',materiality:'HIGH',sources:'S12'},
+{id:'C44',status:'VERIFIED_FACT',text:'The ECI said ECINET uses role-based access and would be reviewed by an expert committee for compliance with applicable Acts and Rules.',materiality:'HIGH',sources:'S2'}];
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function renderClaims(filter='ALL'){if(!claimList||!claimSummary)return;const counts=data.lead.claim_status_counts;claimSummary.innerHTML=Object.entries(counts).map(([k,v])=>'<div class="claim-stat"><b>'+v+'</b><small>'+k.replaceAll('_',' ')+'</small></div>').join('');claimList.innerHTML=claimSamples.filter(x=>filter==='ALL'||x.status===filter).map(c=>'<div class="claim-item"><div class="claim-top"><span class="claim-id">'+esc(c.id)+'</span><span class="status-label '+(c.status==='VERIFIED_FACT'?'verified':c.status==='ATTRIBUTED_CLAIM'?'attributed':'unknown')+'">'+esc(c.status.replaceAll('_',' '))+'</span></div><div class="claim-text">'+esc(c.text)+'</div><div class="claim-meta">Materiality: '+esc(c.materiality)+' · Sources: '+esc(c.sources)+'</div></div>').join('')}
 renderClaims();
-
-document.querySelectorAll('[data-open]').forEach(b => b.addEventListener('click', () => document.getElementById(b.dataset.open).classList.add('open')));
-document.querySelectorAll('[data-close]').forEach(b => b.addEventListener('click', () => document.getElementById(b.dataset.close).classList.remove('open')));
-document.querySelectorAll('.filter').forEach(b => b.addEventListener('click', () => {
-  document.querySelectorAll('.filter').forEach(x => x.classList.remove('active'));
-  b.classList.add('active');
-  renderClaims(b.dataset.status);
-}));
-
-document.querySelector('#readerContent').innerHTML = `<h2>What happened</h2><p>A special enrolment and correction drive is the immediate operational development in completed-SIR jurisdictions. Established reporting says the exercise is intended to identify eligible voters left out of the roll and to facilitate new and first-time enrolment.</p><h2>The system</h2><p>The constitutional chain starts with the Election Commission and ends, for individual enrolment questions, with the Electoral Registration Officer. Booth Level Officers handle field-level enumeration and document collection. Software can enable the workflow, but it does not replace legal authority or the statutory decision.</p><h2>How we got here</h2><p>The present argument sits on top of the Bihar SIR ordered in 2025 and considered by the Supreme Court in its 27 May 2026 judgment. The dispute widened as intensive revision reached other states and became a question about documentation, omissions, software and remedies.</p><h2>What remains unknown</h2><p>The national draft-roll absence count cannot by itself establish the number of eligible voters wrongly excluded. The September 29 communication remains attributed in this edition until the underlying document is retrieved and checked directly.</p>`;
+const linkSources=sources=>(sources||[]).map(([name,url])=>'<a class="inline-source" href="'+esc(url)+'" target="_blank" rel="noreferrer">'+esc(name)+' ↗</a>').join('<span class="source-sep"> · </span>');
+if(deepPages){deepPages.innerHTML=deepEdition.pages.map(p=>'<section id="'+esc(p.slug)+'" class="home-section edition-page"><div class="section-rule"><span><b class="page-count">P'+String(p.page).padStart(2,'0')+'</b>'+esc(p.section)+'</span><span>'+esc(p.kicker)+'</span></div><div class="edition-head"><div><span class="section-tag">'+esc(p.kicker)+'</span><h2>'+esc(p.headline)+'</h2></div><p>'+esc(p.intro)+'</p></div><div class="edition-grid"><article class="edition-lead"><div class="story-kicker">THE LEAD</div><h3>'+esc(p.lead.headline)+'</h3><p>'+esc(p.lead.body)+'</p><div class="inline-sources">'+linkSources(p.sources)+'</div></article><aside class="edition-rail">'+(p.cards||[]).map(c=>'<article><span>'+esc(c.label)+'</span><h4>'+esc(c.headline)+'</h4><p>'+esc(c.body)+'</p></article>').join('')+'</aside></div></section>').join('')}
+}
+document.querySelectorAll('[data-open]').forEach(b=>b.addEventListener('click',()=>document.getElementById(b.dataset.open)?.classList.add('open')));
+document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',()=>document.getElementById(b.dataset.close)?.classList.remove('open')));
+document.querySelectorAll('.filter').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));b.classList.add('active');renderClaims(b.dataset.status)}));
+const readerContent=document.querySelector('#readerContent');if(readerContent)readerContent.innerHTML='<h2>What happened</h2><p>A special enrolment and correction drive is the immediate operational development in completed-SIR jurisdictions. Established reporting says the exercise is intended to identify eligible voters left out of the roll and to facilitate new and first-time enrolment.</p><h2>The system</h2><p>The constitutional chain starts with the Election Commission and ends, for individual enrolment questions, with the Electoral Registration Officer. Booth Level Officers handle field-level enumeration and document collection.</p><h2>How we got here</h2><p>The present argument sits on top of the Bihar SIR ordered in 2025 and considered by the Supreme Court in its 27 May 2026 judgment.</p><h2>What remains unknown</h2><p>The national draft-roll absence count cannot by itself establish the number of eligible voters wrongly excluded. The September 29 communication remains attributed until the underlying document is retrieved and checked directly.</p>';

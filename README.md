@@ -1,63 +1,87 @@
 # Daily Knowledge
 
-> **Don't publish news. Publish understanding of the news.**
+> Don't publish news. Publish understanding of the news.
 
-Daily Knowledge is a local-first newspaper-style publication concept. It turns important news into structured understanding: what happened, how the underlying system works, how we got here, what is verified, what is claimed, what remains unknown, and what happens next.
+Daily Knowledge is a local-first newspaper-style publication built around evidence, systems, history and explanation.
 
-## What is in this repository
+## Current MVP
 
-- `index.html` — the newspaper-style localhost edition surface.
-- `styles.css` — tabloid/broadsheet-inspired visual system with responsive and print layouts.
-- `app.js` — source desk, claim filters, paper view and reader view.
-- `data/edition-001.json` — structured source/QA metadata for Edition 001.
-- `editorial-policy/` — publication constitution and verification policy.
-- `docs/` — architecture and operating notes.
-- `editions/001/` — reserved for durable edition-specific artifacts.
-- `tests/` — smoke validation for the public repository.
+Edition 001 is now a **25-page continuous newsroom edition** dated 2 October 2026.
+
+The browser is deliberately continuous—not a PDF viewer. Print CSS can turn the same content into newspaper-sized pages when needed.
+
+### Editorial coverage
+
+1. Front page + India institutional deep dive
+2. World
+3. Europe / geopolitics
+4. United States
+5. Asia
+6. India
+7. Global markets
+8. U.S. markets
+9. Asia markets
+10. India markets
+11. Economy
+12. Central banks / rates
+13. Business
+14. Technology / AI / chips / cyber
+15. Crypto
+16. Energy & commodities
+17. Science / health / consumer
+18. Emerging markets / week ahead
 
 ## Run locally
 
-Requires Node.js 18+.
+Node.js 18+:
 
 ```bash
 npm test
 npm start
 ```
 
-Then open `http://localhost:4173`.
+Open `http://localhost:4173`.
 
-The browser edition is deliberately local-first for the MVP. GitHub is the public engineering/archive repository, not the publication surface.
+## Product doctrine
 
-## Editorial model
+**Don't publish news. Publish understanding of the news.**
 
-The pipeline is designed around a Story Graph, Claim Ledger and Evidence Graph:
+The editorial pipeline is:
 
 `DISCOVER → INGEST → NORMALIZE → CLUSTER → RANK → RESEARCH → PRIMARY-SOURCE CHECK → STORY GRAPH → CLAIM/EVIDENCE GRAPH → WRITE → QA → HUMAN SIGN-OFF → TRANSLATE → FINAL QA → EDITION → ARCHIVE`
 
-AI is a processor, not an authority.
+AI is a processor, not authority.
 
-### Claim statuses
+The story graph connects event, explanation, system, history, timeline, people/institutions, evidence, claims, verification, implications and what happens next.
 
-- `VERIFIED_FACT`
-- `ATTRIBUTED_CLAIM`
-- `DISPUTED`
-- `ANALYSIS`
-- `UNKNOWN`
-- `DEVELOPING`
+## Evidence model
 
-### Source tiers
+Claim statuses:
 
-1. Primary records: courts, regulators, government, parliament, filings, datasets, transcripts, original research.
-2. Established reporting: reputable national, regional or international newsrooms.
-3. Specialist sources: academic, industry, expert and think-tank material.
-4. Discovery: social, forums, newsletters, tips. Leads only; not proof.
+- VERIFIED_FACT
+- ATTRIBUTED_CLAIM
+- DISPUTED
+- ANALYSIS
+- UNKNOWN
+- DEVELOPING
+
+Source tiers:
+
+- Tier 1 — primary records
+- Tier 2 — established reporting
+- Tier 3 — specialist sources
+- Tier 4 — discovery leads only
+
+Evidence stays attached to stories in the interface. There is deliberately **no standalone “Where every material claim points” page**.
 
 ## Edition 001 status
 
-Edition 001 is an archival snapshot dated **2 October 2026**. It is marked **READY FOR HUMAN REVIEW**, not published.
+**READY FOR HUMAN REVIEW**
 
-Human-only tasks remain before a live public edition: logged-out source verification, direct review of every Tier 2 article, adversarial read, adjective audit, final correction pass, publication timestamp and a public publication URL.
+This is an archival 2 October 2026 snapshot, not a live published edition. Human review still includes direct logged-out source verification, Tier 2 article review, adversarial review, adjective audit and final publication sign-off.
+
+GitHub is the public engineering/archive repository. Localhost is the current publication surface.
 
 ## Licensing
 
-Code is licensed under MIT in `LICENSE-CODE`. Editorial content in this repository is **not** automatically licensed under MIT; see `CONTENT-LICENSE.md`.
+Code is MIT via `LICENSE-CODE`. Editorial content is separate; see `CONTENT-LICENSE.md`.
