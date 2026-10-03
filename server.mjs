@@ -39,5 +39,5 @@ const server = http.createServer(async (req, res) => {
 });
 
 server.listen(port, '127.0.0.1', () => {
-  console.log(`Daily Knowledge running at http://localhost:${port}`);
+  console.log(`The Verdict running at http://localhost:${port}`);
 });
