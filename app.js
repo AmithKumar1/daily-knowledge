@@ -606,10 +606,7 @@ function renderArticle(slug) {
   // Attach dynamic listener for back button
   const backBtn = document.getElementById('articleBackBtn');
   if (backBtn) {
-    backBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      window.location.hash = '';
-    });
+    backBtn.addEventListener('click', goHomeAndTop);
   }
 
   // Hook data-open inside article view
@@ -620,6 +617,62 @@ function renderArticle(slug) {
       if (el) el.classList.add('open');
     });
   });
+}
+
+// Home and Top Navigation Engine
+function goHomeAndTop(e) {
+  if (e) e.preventDefault();
+  
+  if (window.location.hash) {
+    try {
+      history.pushState(null, '', window.location.pathname + window.location.search);
+    } catch {
+      window.location.hash = '';
+    }
+  }
+  
+  if (articleView) articleView.style.display = 'none';
+  if (homeView) homeView.style.display = 'block';
+  
+  // Smoothly scroll to the very top with Lenis / smooth-scroll
+  if (typeof window.smoothScrollTo === 'function') {
+    window.smoothScrollTo(0);
+  } else if (window.lenis) {
+    window.lenis.scrollTo(0, { duration: 1.15 });
+  } else {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+}
+
+// Wire Sticky Brand and Main Wordmark
+const stickyBrand = document.getElementById('stickyBrand');
+const mainWordmark = document.getElementById('mainWordmark');
+
+if (stickyBrand) {
+  stickyBrand.addEventListener('click', goHomeAndTop);
+}
+if (mainWordmark) {
+  mainWordmark.addEventListener('click', goHomeAndTop);
+}
+
+// Update sticky brand visibility on scroll
+function updateStickyBrand() {
+  if (!stickyBrand) return;
+  const isArticle = (window.location.hash || '').startsWith('#article/');
+  const scrollY = window.scrollY || document.documentElement.scrollTop || 0;
+  
+  // On article page, show if scrolled > 30px
+  // On homepage, show once scrolled past masthead (> 110px)
+  if (isArticle ? scrollY > 30 : scrollY > 110) {
+    stickyBrand.classList.add('visible');
+  } else {
+    stickyBrand.classList.remove('visible');
+  }
+}
+
+window.addEventListener('scroll', updateStickyBrand, { passive: true });
+if (window.lenis) {
+  window.lenis.on('scroll', updateStickyBrand);
 }
 
 // Internal Routing Engine
@@ -643,6 +696,7 @@ function handleRoute() {
       }
     }
   }
+  setTimeout(updateStickyBrand, 50);
 }
 
 window.addEventListener('hashchange', handleRoute);
