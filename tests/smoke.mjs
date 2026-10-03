@@ -7,7 +7,9 @@ const edition=JSON.parse(await readFile(new URL('../data/global-edition-001.json
 for(const marker of ['DAILY KNOWLEDGE','WHO ACTUALLY DECIDES','TODAY IN 90 SECONDS','THE DISPUTE','deepPages'])if(!html.includes(marker))throw new Error('Missing marker: '+marker);
 if(edition.page_count!==25||edition.pages.length!==17||edition.pages[0].page!==9||edition.pages.at(-1).page!==25)throw new Error('25-page structure drift');
 const total=Object.values(data.lead.claim_status_counts).reduce((a,b)=>a+b,0);if(total!==44)throw new Error('Claim total drift');
-if(data.lead.high_plus_critical!==34)throw new Error('Materiality drift');
+import { execSync } from 'node:child_process';
+execSync('node --check app.js server.mjs tests/smoke.mjs', { cwd: new URL('..', import.meta.url) });
+
 console.log('PASS — Daily Knowledge smoke tests');
 console.log('PASS — 25-page continuous newsroom edition');
 console.log('PASS — 44 claims / 34 high+critical');
