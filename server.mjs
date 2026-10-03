@@ -14,7 +14,11 @@ const mime = {
   '.md': 'text/markdown; charset=utf-8',
   '.txt': 'text/plain; charset=utf-8',
   '.svg': 'image/svg+xml',
-  '.ico': 'image/x-icon'
+  '.ico': 'image/x-icon',
+  '.jpg': 'image/jpeg',
+  '.jpeg': 'image/jpeg',
+  '.png': 'image/png',
+  '.webp': 'image/webp'
 };
 
 const server = http.createServer(async (req, res) => {

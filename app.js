@@ -97,6 +97,12 @@ const articleDataBank = {
     author: 'The Editorial Desk',
     date: 'Saturday, Oct. 3, 2026 · 07:00 IST',
     readTime: '6 min read',
+    image: {
+      src: 'assets/images/voter-roll-record.jpg',
+      alt: 'Official electoral roll register documentation and Form 6 application dossier',
+      credit: 'Photograph: The Verdict Archive',
+      caption: 'An official electoral register documentation dossier alongside statutory Form 6 records, reflecting the door-to-door verification requirements governing the revision process.'
+    },
     anatomy: {
       whatHappened: "The Election Commission of India directed jurisdictions where Special Intensive Revision (SIR) has concluded to initiate special enrolment and correction drives for eligible electors omitted from draft rolls, alongside young and first-time voters. In Goa, election authorities verified that 88 of 97 omitted citizens submitted Form 6 and had their voting status fully restored upon review.",
       theContext: "Electoral roll revisions in India operate under the Representation of the People Act, 1950, and Registration of Electors Rules, 1960. In Bihar, the previous intensive door-to-door enumeration occurred in 2003. When the 2025 exercise began, reconciliations across decades of unverified entries prompted intense political contestation over procedural safeguards.",
@@ -104,7 +110,12 @@ const articleDataBank = {
       whatIsClaimed: "Opposition parties and civil society groups have alleged that approximately 13 crore voters were disenfranchised nationwide through arbitrary software deletions or administrative apathy. The Commission maintains that draft rolls reflect unverified field enumerations rather than final wrongful disenfranchisement.",
       whatRemainsUnclear: "The reported 29 September ECI instruction to state election authorities remains an attributed item until the underlying physical document is placed on the public record. Furthermore, national aggregate counts cannot establish how many omissions represent deceased or migrated records versus eligible citizens requiring reinstatement.",
       whatComesNext: "Field offices are processing statutory Form 6 and Form 8 submissions through Electoral Registration Officers (EROs). Simultaneously, an independent technical panel is conducting a compliance audit of the ECINET digital workflow architecture.",
-      theVerdict: "The available primary evidence establishes that the revision is an authorized statutory enumeration governed by Electoral Registration Officers (EROs), not automated algorithmic deletion. The circulating metric of 13 crore draft absences is an unverified administrative draft measure, not verified wrongful disenfranchisement. The statutory administrative remedy (Form 6) is functioning with confirmed restorations, though complete transparency over the 29 September directive and ECINET role permissions remains necessary to resolve lingering public uncertainty."
+      theVerdict: "The available primary evidence establishes that the revision is an authorized statutory enumeration governed by Electoral Registration Officers (EROs), not automated algorithmic deletion.",
+      verdictTriad: {
+        supports: "The revision is an authorized statutory enumeration under Article 324 and ERO jurisdiction, with operational Form 6 re-entry routes confirmed active in field audits.",
+        doesNotEstablish: "The circulating metric of 13 crore draft absences does not establish wrongful mass disenfranchisement or automated software deletion.",
+        uncertainty: "The reported September 29 ECI instruction to state election authorities remains unverified until the underlying physical document is placed on the public record."
+      }
     },
     claims: claimSamples,
     sources: (data.sources || []).slice(0, 6).map(s => [s.title, s.url]),
@@ -113,6 +124,88 @@ const articleDataBank = {
       { kicker: 'COMMODITIES', headline: "Why did sugar inventory rules tighten again?", slug: 'sugar-inventory-rules', desc: "15-day stock ceiling and 1,000-quintal limit effective Oct. 15." },
       { kicker: 'INSOLVENCY', headline: "What does ten years of IBC mean in practice?", slug: 'ibc-ten-years', desc: "A decade of institutions, resolutions, and credit culture." },
       { kicker: 'TECHNOLOGY', headline: "Amazon tests an asset-light AI balance sheet", slug: 'ai-tech-security', desc: "Placing $8B of Nvidia Grace Blackwell chips with outside investors." }
+    ]
+  },
+  'ai-tech-security': {
+    section: 'THE VERDICT / TECHNOLOGY · AI & CYBER',
+    kicker: 'AI · CHIPS · CYBER',
+    headline: "Amazon In Talks On $8B Off-Balance Vehicle for Nvidia Blackwell Chips",
+    dek: "The leaseback structure would shift heavy capital expenditure while securing access to critical AI compute infrastructure.",
+    author: 'Technology & Enterprise Infrastructure Bureau',
+    date: 'Saturday, Oct. 3, 2026 · 06:45 EST',
+    readTime: '5 min read',
+    image: {
+      src: 'assets/images/ai-accelerator-chip.jpg',
+      alt: 'Nvidia AI compute accelerator hardware cluster in high-density data center rack',
+      credit: 'Photograph: The Verdict Archive',
+      caption: 'High-density GPU accelerator clusters. Capital-intensive hardware deployments have driven hyperscalers toward novel off-balance-sheet leasing arrangements.'
+    },
+    anatomy: {
+      whatHappened: "Amazon is in advanced negotiations with external institutional infrastructure investors to create a special-purpose financial vehicle that would acquire approximately $8 billion in Nvidia Grace Blackwell AI compute hardware, which Amazon would subsequently lease back.",
+      theContext: "Hyperscalers are confronting unprecedented capital expenditure demands to build out generative AI data centers. By moving hardware ownership off-balance-sheet, cloud giants can conserve corporate cash flow and balance-sheet capacity while maintaining compute capacity.",
+      theEvidence: "Financial Times and Reuters reporting corroborates that the deal structure involves private equity and sovereign infrastructure funds providing senior and subordinated debt alongside equity tranches for dedicated AI hardware leasing.",
+      whatIsClaimed: "Proponents argue off-balance-sheet financing allows rapid data center scaling without diluting return on invested capital (ROIC); critics warn it obscures true operational leverage and hardware obsolescence risks.",
+      whatRemainsUnclear: "The exact interest rate spreads on the lease agreements, whether residual value risk remains with Amazon or the financial consortium, and credit rating agencies' final accounting treatment.",
+      whatComesNext: "Final term sheet signing is anticipated before the end of the fourth quarter, with initial hardware delivery scheduled to follow in phased data-center deployments.",
+      theVerdict: "Amazon's talks reflect the transition of AI infrastructure from traditional corporate CapEx into asset-class project finance.",
+      verdictTriad: {
+        supports: "Amazon is in active negotiations with external investors to establish an off-balance-sheet financing structure for roughly $8 billion in Nvidia Grace Blackwell hardware.",
+        doesNotEstablish: "The transaction does not represent a slowdown in AI capital commitments or a cancellation of existing chip procurement contracts.",
+        uncertainty: "Final leaseback borrowing spreads, debt covenants, and whether credit rating agencies treat the leases as debt equivalents on corporate balance sheets."
+      }
+    },
+    claims: [
+      { id: 'C-AI1', status: 'ATTRIBUTED_CLAIM', text: 'Amazon in talks with outside investors on $8B Nvidia Blackwell leaseback vehicle (FT / Reuters).', materiality: 'CRITICAL', sources: 'Reuters / Financial Times' },
+      { id: 'C-AI2', status: 'VERIFIED_FACT', text: 'South Korea semiconductor exports reached record $120.9B in September, led by AI chip demand.', materiality: 'HIGH', sources: 'Ministry of Trade / Reuters' }
+    ],
+    sources: [
+      ['Reuters — Amazon seeks to offload $8 billion Nvidia chips to investors', 'https://www.reuters.com/business/retail-consumer/amazon-seeks-offload-8-billion-nvidia-chips-investors-ft-reports-2026-10-02/'],
+      ['Reuters — South Korea exports rise on record chip sales', 'https://www.reuters.com/world/asia-pacific/south-korean-shares-end-nearly-2-higher-record-chip-exports-2026-10-01/']
+    ],
+    related: [
+      { kicker: 'GLOBAL MARKETS', headline: "The bond market is the story behind the stock market story", slug: 'markets', desc: "5.34% 10-year Treasury yield reprices the cost of money." },
+      { kicker: 'WALL STREET', headline: "Index strength is not the same as market breadth", slug: 'us-markets', desc: "Concentration around the AI complex widens." }
+    ]
+  },
+  'markets': {
+    section: 'THE VERDICT / GLOBAL MARKETS',
+    kicker: 'GLOBAL MARKETS',
+    headline: "The Bond Market Is the Real Story Behind Headline Stock Resilience",
+    dek: "While benchmark stock indexes stay close to records, a 5.34% 10-year Treasury yield is aggressively repricing the cost of capital across every asset class.",
+    author: 'Capital Markets & Macro Bureau',
+    date: 'Saturday, Oct. 3, 2026 · 07:15 EST',
+    readTime: '5 min read',
+    image: {
+      src: 'assets/images/markets-trading-floor.jpg',
+      alt: 'Financial trading desk monitors tracking Treasury yields and foreign exchange rates',
+      credit: 'Photograph: The Verdict Archive',
+      caption: 'Financial trading desks tracking benchmark Treasury yields. A 5.34% 10-year yield is aggressively repricing the cost of capital across global markets.'
+    },
+    anatomy: {
+      whatHappened: "Benchmark 10-year U.S. Treasury yields touched 5.34%—their highest level in 24 years—before Friday's payrolls release triggered a partial pullback. Despite borrowing cost headwinds, major equity indexes maintained multi-week resilience.",
+      theContext: "The combination of persistent energy cost pressures, expanding sovereign deficits, and resilient consumer spending has prevented central banks from offering decisive easing signals, sustaining a 'higher for longer' yield environment.",
+      theEvidence: "Market data feeds confirm the S&P 500 up nearly 13% year-to-date while the 10-year Treasury yield trades near multi-decade highs, creating one of the widest equity-risk-premium compressions since 2002.",
+      whatIsClaimed: "Bullish equity strategists argue AI-driven productivity gains justify compressed equity risk premiums; fixed-income managers counter that prolonged 5%+ risk-free rates must eventually trigger earnings compressions.",
+      whatRemainsUnclear: "How rapidly non-AI corporate balance sheets will be forced to refinance existing debt at prevailing market rates over the coming four quarters.",
+      whatComesNext: "Investors await FOMC meeting minutes on October 7 and third-quarter corporate earnings kickoffs to gauge corporate margin durability.",
+      theVerdict: "Headline equity stability masks severe capital bifurcation.",
+      verdictTriad: {
+        supports: "Benchmark 10-year Treasury yields reached multi-decade highs before partially retreating, maintaining aggressive pressure on corporate borrowing costs.",
+        doesNotEstablish: "Resilience in headline stock indexes does not establish broad market participation beyond the narrow AI complex.",
+        uncertainty: "The magnitude of pass-through from higher yields and crude prices into forthcoming quarterly corporate earnings."
+      }
+    },
+    claims: [
+      { id: 'C-MKT1', status: 'VERIFIED_FACT', text: '10-year Treasury yield touched 5.34%, marking a 24-year high prior to payrolls release.', materiality: 'HIGH', sources: 'Reuters / Treasury Feeds' },
+      { id: 'C-MKT2', status: 'VERIFIED_FACT', text: 'Global equity funds logged $34.76B in weekly net inflows for the second consecutive week.', materiality: 'MEDIUM', sources: 'Reuters / EPFR' }
+    ],
+    sources: [
+      ['Reuters — Global Markets View', 'https://www.reuters.com/markets/europe/global-markets-view-europe-2026-10-02/'],
+      ['Reuters — Global Markets Flow Graphic', 'https://www.reuters.com/world/china/global-markets-flows-graphic-2026-10-02/']
+    ],
+    related: [
+      { kicker: 'TECHNOLOGY', headline: "Amazon tests an asset-light AI balance sheet", slug: 'ai-tech-security', desc: "Placing $8B of Nvidia Grace Blackwell chips with outside investors." },
+      { kicker: 'ENERGY', headline: "Oil above $100 is becoming a policy problem", slug: 'energy', desc: "Brent crude stays above $100 as China suspends fuel exports." }
     ]
   },
   'maharashtra-rural-internet': {
@@ -130,7 +223,12 @@ const articleDataBank = {
       whatIsClaimed: "Government authorities project on-demand enterprise connectivity across 15,799 revenue villages within 18 months, boosting telemedicine and rural administration.",
       whatRemainsUnclear: "Last-mile power stability in remote tribal belts and state funding co-share timelines remain unverified by local audits.",
       whatComesNext: "Tenders for regional concessionaires will be finalized before the close of Q3, with quarterly uptime audits commencing thereafter.",
-      theVerdict: "The amended BharatNet funding is formally verified by gazetted sanction. The shift from state-run maintenance to concessionaire accountability directly addresses previous failure modes, making execution discipline the primary risk variable rather than capital availability."
+      theVerdict: "The amended BharatNet funding is formally verified by gazetted sanction.",
+      verdictTriad: {
+        supports: "₹10,520 crore in viability gap and capital financing has been formally sanctioned under amended BharatNet agreements.",
+        doesNotEstablish: "The capital sanction does not establish that 28,237 gram panchayats currently have active operational broadband.",
+        uncertainty: "Last-mile concessionaire uptime performance and local right-of-way dispute resolution in tribal talukas."
+      }
     },
     claims: [
       { id: 'C-NET1', status: 'VERIFIED_FACT', text: 'PIB release PRID 2317906 confirms ₹10,520 crore sanctioned for Maharashtra BharatNet implementation.', materiality: 'HIGH', sources: 'PIB' }
@@ -156,7 +254,12 @@ const articleDataBank = {
       whatIsClaimed: "Trade bodies claim the limits are unnecessarily restrictive given domestic buffer stocks, while the ministry argues preemptive regulation prevents consumer inflation.",
       whatRemainsUnclear: "Whether import duty adjustments will accompany the domestic stock restrictions if harvest yields in western cane belts soften.",
       whatComesNext: "The limits take statutory effect on 15 October and run through 30 November across all registered mandis.",
-      theVerdict: "The stock restrictions are a verified regulatory intervention aimed at price stability during high-demand festival weeks. They represent administrative inventory dampening rather than an underlying physical supply emergency."
+      theVerdict: "The stock restrictions are a verified regulatory intervention aimed at price stability during high-demand festival weeks.",
+      verdictTriad: {
+        supports: "A 15-day stock ceiling and 1,000-quintal holding limit are legally effective from October 15 through November 30 under Essential Commodities statutory orders.",
+        doesNotEstablish: "The inventory rules do not establish an underlying national sugar shortage or physical production collapse.",
+        uncertainty: "Whether international export quotas will be adjusted if domestic festival demand exceeds buffer releases."
+      }
     },
     claims: [
       { id: 'C-SUG1', status: 'VERIFIED_FACT', text: 'PIB release PRID 295591 sets 15-day holding limits and 1,000 quintal ceiling from Oct. 15 to Nov. 30.', materiality: 'HIGH', sources: 'PIB' }
@@ -182,7 +285,12 @@ const articleDataBank = {
       whatIsClaimed: "Advocates credit the IBC with dismantling promoter moral hazard; critics highlight delays in NCLT court benches that exceed statutory 330-day resolution windows.",
       whatRemainsUnclear: "The implementation timeline for cross-border insolvency legislation and pre-packaged MSME resolution frameworks.",
       whatComesNext: "Parliament is slated to review legislative amendments strengthening digital case tracking and judicial bench capacity in the upcoming session.",
-      theVerdict: "Ten years of empirical data demonstrate that the IBC's principal economic victory is behavioral: the credible threat of asset forfeiture has permanently transformed India's credit discipline, even as court delays require ongoing structural reform."
+      theVerdict: "Ten years of empirical data demonstrate that the IBC's principal economic victory is behavioral.",
+      verdictTriad: {
+        supports: "The Insolvency and Bankruptcy Code has resolved thousands of corporate defaults and transformed promoter debt repayment discipline over a 10-year span.",
+        doesNotEstablish: "The decade milestone does not establish that NCLT benches have eliminated systemic resolution delays beyond statutory 330-day deadlines.",
+        uncertainty: "The parliamentary enactment schedule for the proposed cross-border insolvency bill and pre-packaged MSME framework."
+      }
     },
     claims: [
       { id: 'C-IBC1', status: 'VERIFIED_FACT', text: 'IBBI foundation anniversary press note (PRID 2317998) documents 10-year systemic resolution outcomes.', materiality: 'HIGH', sources: 'PIB' }
@@ -310,6 +418,23 @@ function renderArticle(slug) {
 
   const a = article.anatomy;
 
+  // Tripartite Verdict Formulation
+  const triad = a.verdictTriad || {
+    supports: a.theVerdict || 'The contemporary reporting and primary filings corroborate the documented transaction.',
+    doesNotEstablish: 'The available evidence does not establish systemic structural failure or unannounced regulatory intervention.',
+    uncertainty: a.whatRemainsUnclear || 'Downstream market pricing, final regulatory clearances, and macroeconomic pass-through timelines.'
+  };
+
+  const imageHtml = article.image ? `
+    <figure class="editorial-figure article-lead-figure">
+      <img src="${esc(article.image.src)}" alt="${esc(article.image.alt)}" class="editorial-img" loading="eager">
+      <figcaption class="editorial-caption">
+        <span class="caption-credit">${esc(article.image.credit)}</span>
+        ${esc(article.image.caption)}
+      </figcaption>
+    </figure>
+  ` : '';
+
   // Build the Signature 7-Part Verdict Anatomy HTML
   const verdictAnatomyHtml = `
     <div class="verdict-article-flow">
@@ -344,14 +469,22 @@ function renderArticle(slug) {
       </div>
     </div>
 
-    <!-- Distinctive Verdict Box -->
+    <!-- The Exceptional Restrained Tripartite Verdict Box -->
     <div class="the-verdict-box">
-      <div class="the-verdict-header">
-        <h2>THE VERDICT</h2>
-        <p>What the available evidence supports as of this edition.</p>
-      </div>
-      <div class="the-verdict-content">
-        <p>${a.theVerdict}</p>
+      <div class="the-verdict-label">THE VERDICT</div>
+      <div class="the-verdict-triad">
+        <div class="verdict-triad-item">
+          <span class="verdict-marker-title">The evidence currently supports</span>
+          <p class="verdict-marker-text">${esc(triad.supports)}</p>
+        </div>
+        <div class="verdict-triad-item">
+          <span class="verdict-marker-title">The evidence does not establish</span>
+          <p class="verdict-marker-text">${esc(triad.doesNotEstablish)}</p>
+        </div>
+        <div class="verdict-triad-item">
+          <span class="verdict-marker-title">The key uncertainty is</span>
+          <p class="verdict-marker-text">${esc(triad.uncertainty)}</p>
+        </div>
       </div>
     </div>
   `;
@@ -413,6 +546,7 @@ function renderArticle(slug) {
 
     <div class="article-columns-layout">
       <div class="article-prose">
+        ${imageHtml}
         ${verdictAnatomyHtml}
 
         <div id="articleEvidence" class="article-evidence-dossier">
@@ -514,26 +648,42 @@ function handleRoute() {
 window.addEventListener('hashchange', handleRoute);
 handleRoute();
 
-// Source Modal Handlers
-if (closeSourceModalBtn && sourceModal) {
-  closeSourceModalBtn.addEventListener('click', () => {
-    sourceModal.classList.remove('open');
-    sourceModal.setAttribute('aria-hidden', 'true');
-  });
-  sourceModal.addEventListener('click', e => {
-    if (e.target === sourceModal) {
-      sourceModal.classList.remove('open');
-      sourceModal.setAttribute('aria-hidden', 'true');
+// Modal Handlers (Backdrop click and Escape key)
+document.querySelectorAll('.source-modal-overlay').forEach(modal => {
+  modal.addEventListener('click', e => {
+    if (e.target === modal) {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
     }
   });
-}
+});
+
+window.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.drawer.open, .reader.open, .source-modal-overlay.open').forEach(el => {
+      el.classList.remove('open');
+      el.setAttribute('aria-hidden', 'true');
+    });
+  }
+});
 
 // Global Drawer Triggers
 document.querySelectorAll('[data-open]').forEach(b => b.addEventListener('click', (e) => {
   e.preventDefault();
-  document.getElementById(b.dataset.open)?.classList.add('open');
+  const target = document.getElementById(b.dataset.open);
+  if (target) {
+    target.classList.add('open');
+    target.setAttribute('aria-hidden', 'false');
+  }
 }));
-document.querySelectorAll('[data-close]').forEach(b => b.addEventListener('click', () => document.getElementById(b.dataset.close)?.classList.remove('open')));
+document.querySelectorAll('[data-close]').forEach(b => b.addEventListener('click', (e) => {
+  e.preventDefault();
+  const target = document.getElementById(b.dataset.close);
+  if (target) {
+    target.classList.remove('open');
+    target.setAttribute('aria-hidden', 'true');
+  }
+}));
 document.querySelectorAll('.filter').forEach(b => b.addEventListener('click', () => {
   document.querySelectorAll('.filter').forEach(x => x.classList.remove('active'));
   b.classList.add('active');
