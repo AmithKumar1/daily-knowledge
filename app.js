@@ -1,5 +1,5 @@
-const data=await (await fetch('./data/edition-001.json')).then(r=>r.json());
-const deepEdition=await (await fetch('./data/global-edition-001.json')).then(r=>r.json());
+const data=await fetch('./data/edition-001.json').then(r=>r.json());
+const deepEdition=await fetch('./data/global-edition-001.json').then(r=>r.json());
 const sourceList=document.querySelector('#sourceList'),claimList=document.querySelector('#claimList'),claimSummary=document.querySelector('#claimSummary'),deepPages=document.querySelector('#deepPages');
 const claimSamples=[
 {id:'C04',status:'VERIFIED_FACT',text:'The ECI’s 26 September press note describes procedural measures for affected voters, including house visits and help desks/camps.',materiality:'HIGH',sources:'S2'},
