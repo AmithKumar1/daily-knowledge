@@ -1,0 +1,11 @@
+{
+  "name": "daily-knowledge",
+  "version": "0.1.0",
+  "private": false,
+  "description": "Daily Knowledge — a local-first newspaper-style publication that publishes understanding of the news.",
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs",
+    "test": "node tests/smoke.mjs"
+  }
+}

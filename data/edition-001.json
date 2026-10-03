@@ -1,0 +1,46 @@
+{
+  "edition": "001",
+  "date": "2026-10-02",
+  "status": "READY FOR HUMAN REVIEW",
+  "lead": {
+    "slug": "sir-voter-rolls",
+    "headline": "Who actually decides whether your name stays on India's voter list?",
+    "topic": "Special Intensive Revision of electoral rolls",
+    "claim_status_counts": {
+      "VERIFIED_FACT": 31,
+      "ATTRIBUTED_CLAIM": 6,
+      "DISPUTED": 1,
+      "ANALYSIS": 3,
+      "UNKNOWN": 1,
+      "DEVELOPING": 2
+    },
+    "materiality_counts": {"CRITICAL":10,"HIGH":24,"MEDIUM":7,"LOW":3},
+    "high_plus_critical": 34,
+    "open_primary_gap": "The reported September 29 ECI communication was not directly retrieved during edition preparation; related statements remain attributed rather than upgraded to a directly verified primary record."
+  },
+  "sources": [
+    {"id":"S1","tier":"TIER 1","title":"Supreme Court of India — Association for Democratic Reforms & Ors. v. Election Commission of India & Ors., judgment dated 27 May 2026","date":"2026-05-27","url":"https://api.sci.gov.in/supremecourt/2025/35785/35785_2025_1_1501_71617_Judgement_27-May-2026.pdf","access":"verified"},
+    {"id":"S2","tier":"TIER 1","title":"Election Commission procedural press note (PIB mirror), 26 September 2026","date":"2026-09-26","url":"https://www.pib.gov.in/PressReleaseIframePage.aspx?PRID=2315309&lang=2&reg=48","access":"verified"},
+    {"id":"S3","tier":"TIER 1","title":"Election Commission / constitutional provisions reference","date":"current reference","url":"https://www.eci.gov.in/about-eci/constitutional-provisions/","access":"needs-human-browser-check"},
+    {"id":"S4","tier":"TIER 1","title":"Election Commission of India — About ECI","date":"current reference","url":"https://www.eci.gov.in/about-eci/","access":"needs-human-browser-check"},
+    {"id":"S5","tier":"TIER 1","title":"CEO Karnataka / SIR reference materials","date":"current reference","url":"https://ceo.karnataka.gov.in/","access":"needs-human-browser-check"},
+    {"id":"S6","tier":"TIER 1","title":"Amended BharatNet implementation in Maharashtra","date":"2026-10-01","url":"https://www.pib.gov.in/PressReleasePage.aspx?PRID=2317906&lang=1&reg=1","access":"verified"},
+    {"id":"S7","tier":"TIER 1","title":"Government revises sugar stock holding norms","date":"2026-10-01","url":"https://www.pib.gov.in/newsite/erelcontent.aspx?lang=2&reg=48&relid=295591","access":"verified"},
+    {"id":"S8","tier":"TIER 1","title":"IBBI marks ten years since establishment","date":"2026-10-01","url":"https://www.pib.gov.in/PressReleasePage.aspx?PRID=2317998&lang=2&reg=48","access":"verified"},
+    {"id":"S9","tier":"TIER 2","title":"Reuters — India voter-roll dispute and protests, 2 October 2026","date":"2026-10-02","url":"https://www.reuters.com/world/india/indias-cockroach-janata-party-student-groups-protest-demand-poll-chiefs-2026-10-02/","access":"verified"},
+    {"id":"S10","tier":"TIER 2","title":"The Indian Express — ECI orders special drive for left-out voters","date":"2026-10-02","url":"https://indianexpress.com/article/india/election-commission-of-india-sir-left-out-voters-special-drive-10903082/","access":"verified"},
+    {"id":"S11","tier":"TIER 2","title":"NDTV — special-drive reporting on SIR","date":"2026-10-02","url":"https://www.ndtv.com/india-news/election-commission-special-drive-for-left-out-voters-in-states-where-sir-is-complete-9421005","access":"needs-human-browser-check"},
+    {"id":"S12","tier":"TIER 2","title":"Hindustan Times — Goa: 88 of 97 left-out voters re-included","date":"2026-10-02","url":"https://www.hindustantimes.com/india-news/goa-sir-88-of-97-left-out-voters-re-included-after-form-6-some-of-the-remaining-hold-portuguese-passports-eci-gyanesh-kumar-101790902198263.html","access":"verified"},
+    {"id":"S13","tier":"TIER 2","title":"Reserved audit slot — intentionally removed during QA","date":"n/a","url":"","access":"removed"},
+    {"id":"S14","tier":"TIER 2","title":"Economic Times — sugar stock-limit coverage","date":"2026-09-19","url":"https://economictimes.indiatimes.com/industry/cons-products/food/bulk-sugar-users-get-30-day-stock-limit-extension-for-imported-sugar/articleshow/134343074.cms","access":"verified"},
+    {"id":"S15","tier":"TIER 2","title":"Economic Times — IBBI / IBC decade coverage","date":"2026-10-01","url":"https://economictimes.indiatimes.com/","access":"needs-human-browser-check"},
+    {"id":"S16","tier":"TIER 1","title":"Indian National Congress — Jairam Ramesh statement on the ECI press note, 26 September 2026","date":"2026-09-26","url":"https://inc.in/media/press-releases/eci-statement-of-shri-jairam-ramesh","access":"verified"}
+  ],
+  "notes": [
+    "Edition 001 is an archival snapshot dated 2 October 2026.",
+    "Political claims are attributed; the publication does not convert allegations into fact by repetition.",
+    "This repository is an engineering and archival surface. It is not itself the live publication URL.",
+    "Human-only checks remain before live publication: logged-out browser verification of primary links, direct review of every Tier 2 article, adversarial read, adjective audit, and publication timestamp.",
+    "No market data or personalized investment content is included in Edition 001."
+  ]
+}
