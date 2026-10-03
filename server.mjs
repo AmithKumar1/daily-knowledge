@@ -2,8 +2,9 @@ import http from 'node:http';
 import { readFile } from 'node:fs/promises';
 import { statSync } from 'node:fs';
 import { extname, join, normalize } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const root = new URL('.', import.meta.url).pathname;
+const root = fileURLToPath(new URL('.', import.meta.url));
 const port = Number(process.env.PORT || 4173);
 const mime = {
   '.html': 'text/html; charset=utf-8',
@@ -18,6 +19,7 @@ const mime = {
 
 const server = http.createServer(async (req, res) => {
   try {
+    console.log(`[REQ] ${req.method} ${req.url}`);
     const url = new URL(req.url, `http://${req.headers.host}`);
     let pathname = decodeURIComponent(url.pathname);
     if (pathname === '/') pathname = '/index.html';
@@ -29,6 +31,7 @@ const server = http.createServer(async (req, res) => {
     res.writeHead(200, { 'Content-Type': mime[extname(filePath)] || 'application/octet-stream', 'Cache-Control': 'no-store' });
     res.end(body);
   } catch (err) {
+    console.error(`[ERR] ${req.url}:`, err?.message);
     const status = err?.message === 'Forbidden' ? 403 : 404;
     res.writeHead(status, {'Content-Type':'text/plain; charset=utf-8'});
     res.end(status === 404 ? 'Not found' : 'Forbidden');
